@@ -4,6 +4,37 @@ This repository contains the computational notebooks developed for an MSc disser
 
 The work uses the access-restricted **MultiSocial** benchmark and investigates multilingual classification, language- and platform-level robustness, generator generalisation, and SHAP-based interpretability.
 
+## Project at a glance
+
+- **Task:** binary classification of Human-written and AI-generated social-media text.
+- **Scale:** 472,097 texts spanning 22 languages, 5 social-media platforms, and 7 AI text generators.
+- **Model:** fine-tuned `microsoft/mdeberta-v3-base`.
+- **Evaluation:** the unchanged 140,888-sample benchmark test partition, with class-, language-, platform-, and generator-level analysis.
+- **Robustness design:** one reference baseline plus seven leave-one-generator-out (LOGO) experiments to measure generalisation to unseen generators.
+- **Interpretability:** global, error-conditioned, language-conditioned, and generator-conditioned SHAP analyses.
+
+## Selected results
+
+All figures below are taken from the saved notebook outputs; the restricted test records themselves are not included.
+
+| Experiment | Accuracy | AI-class F1 | Macro F1 | ROC-AUC |
+|---|---:|---:|---:|---:|
+| Multilingual experiment, with Gemini excluded from model development | 92.71% | 95.72% | 85.54% | 0.9721 |
+| LOGO reference baseline, with all generators represented | 94.28% | 96.68% | 88.15% | 0.9782 |
+
+The LOGO experiments reveal that strong aggregate performance does not guarantee uniform robustness to unseen generators. Unseen-generator AI detection ranged from **78.25% to 98.72%**. The largest seen-to-unseen generalisation gaps occurred for **OPT-IML-Max-30B (17.97 percentage points)** and **Aya-101 (17.56 percentage points)**, while held-out v5-Eagle and Vicuna generalised particularly strongly. These differences motivate the accompanying generator-specific error and SHAP analyses.
+
+## What this project demonstrates
+
+- Design and evaluation of an end-to-end multilingual NLP classification pipeline.
+- Careful handling of imbalanced benchmark data, predefined splits, subgroup metrics, and false-positive risk.
+- Controlled robustness testing against unseen text generators rather than relying only on a random test split.
+- Explainability analysis that connects predictive performance with token-level model behaviour.
+- Engineering for long-running GPU experiments, including persistent storage, checkpoint resumption, validation checks, and reusable evaluation utilities.
+- Responsible management of access-restricted research data and preparation of a privacy-conscious public portfolio.
+
+For a rapid technical review, start with the aggregate results and subgroup evaluation in Notebook 2, then inspect the baseline-versus-LOGO comparison and generator-specific explainability work in Notebook 3.
+
 ## Repository contents
 
 The notebooks are intended to be read and executed in this order:
