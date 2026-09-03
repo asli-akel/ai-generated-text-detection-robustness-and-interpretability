@@ -1,4 +1,4 @@
-# AI-Generated Text Detection: Robustness and Interpretability in Social Media
+# AI-Generated Text Detection: Robustness & Interpretability in Social Media (MSc Dissertation)
 
 This repository contains the computational notebooks developed for an MSc dissertation on the robustness and interpretability of multilingual AI-generated text detection in social-media settings.
 
