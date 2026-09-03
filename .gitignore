@@ -1,0 +1,40 @@
+# Restricted datasets and tabular derivatives
+data/*
+!data/README.md
+multisocial_anonymized.csv
+multisocial_processed.csv
+*.parquet
+
+# Model artefacts and long-running experiment outputs
+checkpoints/
+checkpoint-*/
+best_model/
+models/
+experiment_outputs/
+Generator_Generalisation_Experiments/
+*.bin
+*.safetensors
+*.pt
+*.pth
+
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+kaggle.json
+credentials.json
+token.json
+
+# Python and notebook-generated local files
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Operating-system and editor files
+.DS_Store
+.vscode/
+.idea/
